@@ -5,26 +5,23 @@
 */
 
 function isAnagram(str1, str2) {
-  if (str1.length == 0 || str2.length == 0 || str1.length != str2.length) {
+  if (str1.length != str2.length) {
     return false;
   }
+  let cleanStr1 = str1.replace(/[^a-zA-Z]/g, "").toLowerCase();
+  let cleanStr2 = str2.replace(/[^a-zA-Z]/g, "").toLowerCase();
 
-  let str1Arr = str1.split("");
-  let str2Arr = str2.split("");
-
-  str1Arr.sort((a, b) => {
-    return a.charCodeAt(0) - b.charCodeAt(0);
-  });
-  str2Arr.sort((a, b) => {
-    return a.charCodeAt(0) - b.charCodeAt(0);
-  });
-
-  for (let i = 0; i < str1Arr.length; i++) {
-    if (str1Arr[i] != str2Arr[i]) {
+  let stringOne = cleanStr1.split("").sort();
+  let stringTwo = cleanStr2.split("").sort();
+  for (let i = 0; i < stringOne.length; i++) {
+    if (stringOne[i] != stringTwo[i]) {
       return false;
     }
   }
   return true;
 }
 
+console.log(isAnagram("", ""));
+
 module.exports = isAnagram;
+// npx jest ./tests/findLargestElement.test.js
