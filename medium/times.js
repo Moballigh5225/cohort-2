@@ -9,5 +9,17 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
-    return 0.01;
+  const start = new Date();
+
+  let number = 0;
+  for (let i = 0; i < n; i++) {
+    number += i;
+  }
+  const end = new Date();
+
+  const timeTaken = (end - start) / 1000;
+  console.log(timeTaken);
+  return timeTaken;
 }
+
+calculateTime(10000000000);
